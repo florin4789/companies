@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CompanyController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,19 +20,9 @@ Route::get('/', function () {
 
 Route::resource('companies', CompanyController::class);
 
-/**
- * This resource route is equivalent to
- *
- *
-Route::get('/companies', 'CompanyController@index');
 
-Route::post('/companies', 'CompanyController@store');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-Route::get('/companies/{id}', 'CompanyController@show');
-
-Route::patch('/companies/{id}', 'CompanyController@update');
-
-Route::delete('/companies/{id}', 'CompanyController@destroy');
-
-
- */
+require __DIR__.'/auth.php';
